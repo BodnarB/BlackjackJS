@@ -49,21 +49,32 @@ function startingCards() {
         let newCard = newCards[0]
         playersHand.push(newCard)
         playersHTML.innerHTML += `<p class="cardName">${newCard.suit} ${newCard.value}</p>`
-        valueOfAce()
+        valueOfAceP()
         document.querySelector(".js-valuesp").innerText = `Össz érték: ${playerSum()}`
-        if (playersHand.length <= 2) { checkingDealer() }
         if (playerSum() >= 21) { finalResult() }
+        if (playersHand.length <= 2 && playerSum() != 21) { checkingDealer() }
     }
-    
+
 }
 
-function valueOfAce() {
+function valueOfAceP() {
     for (let i = 0; i < playersHand.length; i += 1) {
-        if (playersHand[i].value === 1){
+        if (playersHand[i].value === 1) {
             break
         }
         else if ((playersHand[i].value).includes("ace") && playerSum() > 21) {
             playersHand[i].value = 1
+        }
+    }
+}
+
+function valueOfAceD() {
+    for (let i = 0; i < dealersHand.length; i += 1) {
+        if (dealersHand[i].value === 1) {
+            break
+        }
+        else if ((dealersHand[i].value).includes("ace") && playerSum() > 21) {
+            dealersHand[i].value = 1
         }
     }
 }
@@ -80,7 +91,7 @@ function playerSum() {
 
 function checkingDealer() {
     document.querySelector(".js-valuesd").innerText = ``
-    if (dealersSum() < 17 && playerSum() <= 21) { drawCardByDealer() }
+    if (dealersSum() < 17 && playerSum() <= 21) { drawCardByDealer(), valueOfAceD() }
     if (dealersHand.length <= 1) {
         dealersHTML.innerHTML += `<p class="cardName">${dealersHand[0].suit} ${dealersHand[0].value}</p>`
     }
@@ -119,8 +130,14 @@ function finalResult() {
     dealerTotal = dealersSum()
     playerTotal = playerSum()
 
-    if (playersHand.length === 2 && playerTotal === 21) {
+    if (playersHand.length === 2 && playerTotal === 21 && dealerTotal === playerTotal) {
+        resultsHTML.innerHTML = `<p>Döntetlen! Két blackjack!</p>`
+    }
+    else if (playersHand.length === 2 && playerTotal === 21) {
         resultsHTML.innerHTML = `<p>Blackjack! Nyertél!</p>`
+    }
+    else if (dealersHand.length === 2 && dealerTotal === 21) {
+        resultsHTML.innerHTML = `<p>Az osztónak Blackjack! Vesztettél.</p>`
     }
     else if (dealerTotal <= 21 && dealerTotal > playerTotal) {
         resultsHTML.innerHTML = `<p>A dealer nyert! Lapjainak értéke összesen: ${dealerTotal}</p>`
