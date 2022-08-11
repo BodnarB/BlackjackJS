@@ -16,16 +16,15 @@ function init() {
     dealersHTML.innerHTML = ``
     playersHand = []
     dealersHand = []
-    createDeck()
-    startingCards()
-    startingCards()
     stopBtn.disabled = false;
     giveCardBtn.disabled = false;
     resultsHTML.innerHTML = ``
-    if (playerSum() >= 21) {
-        finalResult()
+    createDeck()
+    startingCards()
+    startingCards()
+    if (playerSum() === 21) {
         checkingDealer()
-        showDealersCards()
+        finalResult()
     }
 }
 
@@ -54,7 +53,9 @@ function startingCards() {
         if (playerSum() >= 21) { finalResult() }
         if (playersHand.length <= 2 && playerSum() != 21) { checkingDealer() }
     }
-
+    if (dealersSum() === 21) {
+        finalResult()
+    }
 }
 
 function valueOfAceP() {
@@ -119,6 +120,10 @@ function showDealersCards() {
     dealersHTML.innerHTML = ``;
     document.querySelector(".js-valuesd").innerText = `Össz érték: ${dealersSum()}`
     for (let i = 0; i < dealersHand.length; i += 1) {
+        if (dealersHand[i].value === 1) {
+            let writtenValue = "ace"
+            dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ${writtenValue}</p>`
+        }
         dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ${dealersHand[i].value}</p>`
     }
     stopBtn.disabled = true;
@@ -128,37 +133,35 @@ function showDealersCards() {
 
 function finalResult() {
     while (dealersSum() < 17 && playerSum() < 21) { checkingDealer() }
-    dealerTotal = dealersSum()
-    playerTotal = playerSum()
-
-    if (playersHand.length === 2 && playerTotal === 21 && dealerTotal === playerTotal) {
+    showDealersCards()
+    if (playersHand.length === 2 && playerSum() === 21 && dealersSum() === playerSum()) {
         resultsHTML.innerHTML = `<p>Döntetlen! Két blackjack!</p>`
     }
-    else if (playersHand.length === 2 && playerTotal === 21) {
+    else if (playersHand.length === 2 && playerSum() === 21) {
         resultsHTML.innerHTML = `<p>Blackjack! Nyertél!</p>`
     }
-    else if (dealersHand.length === 2 && dealerTotal === 21) {
+    else if (dealersHand.length === 2 && dealersSum() === 21) {
         resultsHTML.innerHTML = `<p>Az osztónak Blackjack! Vesztettél.</p>`
     }
-    else if (dealerTotal <= 21 && dealerTotal > playerTotal) {
-        resultsHTML.innerHTML = `<p>A dealer nyert! Lapjainak értéke összesen: ${dealerTotal}</p>`
+    else if (dealersSum() <= 21 && dealersSum() > playerSum()) {
+        resultsHTML.innerHTML = `<p>A dealer nyert! Lapjainak értéke összesen: ${dealersSum()}</p>`
     }
-    else if (playerTotal <= 21 && playerTotal > dealerTotal) {
-        resultsHTML.innerHTML = `<p>A játékos nyert! Lapjainak értéke összesen: ${playerTotal}</p>
-        <p>A dealer lapjai összesen: ${dealerTotal} </p>`
+    else if (playerSum() <= 21 && playerSum() > dealersSum()) {
+        resultsHTML.innerHTML = `<p>A játékos nyert! Lapjainak értéke összesen: ${playerSum()}</p>
+        <p>A dealer lapjai összesen: ${dealersSum()} </p>`
     }
-    else if (playerTotal <= 21 && playerTotal == dealerTotal) {
-        resultsHTML.innerHTML = `<p>Döntetlen! Lapok értéke: ${playerTotal}</p>`
+    else if (playerSum() <= 21 && playerSum() == dealersSum()) {
+        resultsHTML.innerHTML = `<p>Döntetlen! Lapok értéke: ${playerSum()}</p>`
     }
-    else if (dealerTotal > 21 && playerTotal <= 21) {
-        resultsHTML.innerHTML = `<p>A dealer lapjainak értéke (${dealerTotal}) több, mint 21!</p> 
-        <p>A játékos nyert! A játékos lapjainak össz értéke: ${playerTotal}</p>`
+    else if (dealersSum() > 21 && playerSum() <= 21) {
+        resultsHTML.innerHTML = `<p>A dealer lapjainak értéke (${dealersSum()}) több, mint 21!</p> 
+        <p>A játékos nyert! A játékos lapjainak össz értéke: ${playerSum()}</p>`
     }
-    else if (playerTotal > 21 && dealerTotal <= 21) {
-        resultsHTML.innerHTML = `<p>A játékos lapjainak értéke (${playerTotal}) több, mint 21!</p> 
-        <p>A dealer nyert! A dealer lapjainak össz értéke: ${dealerTotal}</p>`
+    else if (playerSum() > 21 && dealersSum() <= 21) {
+        resultsHTML.innerHTML = `<p>A játékos lapjainak értéke (${playerSum()}) több, mint 21!</p> 
+        <p>A dealer nyert! A dealer lapjainak össz értéke: ${dealersSum()}</p>`
     }
-    showDealersCards()
+
 }
 
 addEventListener("load", init)
