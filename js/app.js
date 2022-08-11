@@ -124,7 +124,9 @@ function showDealersCards() {
             let writtenValue = "ace"
             dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ${writtenValue}</p>`
         }
-        dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ${dealersHand[i].value}</p>`
+        else {
+            dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ${dealersHand[i].value}</p>`
+        }
     }
     stopBtn.disabled = true;
     giveCardBtn.disabled = true;
