@@ -73,7 +73,7 @@ function valueOfAceD() {
         if (dealersHand[i].value === 1) {
             break
         }
-        else if ((dealersHand[i].value).includes("ace") && playerSum() > 21) {
+        else if ((dealersHand[i].value).includes("ace") && dealersSum() > 21) {
             dealersHand[i].value = 1
         }
     }
@@ -91,10 +91,11 @@ function playerSum() {
 
 function checkingDealer() {
     document.querySelector(".js-valuesd").innerText = ``
-    if (dealersSum() < 17 && playerSum() <= 21) { drawCardByDealer(), valueOfAceD() }
+    if (dealersSum() < 17 && playerSum() <= 21) { drawCardByDealer() }
     if (dealersHand.length <= 1) {
         dealersHTML.innerHTML += `<p class="cardName">${dealersHand[0].suit} ${dealersHand[0].value}</p>`
     }
+    valueOfAceD()
 }
 
 function drawCardByDealer() {
