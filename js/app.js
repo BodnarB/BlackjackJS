@@ -3,6 +3,8 @@ const values = '2,3,4,5,6,7,8,9,10,jack,queen,king,ace';
 const toConvert = ["jack", "queen", "king"]
 const playersHTML = document.querySelector(".js-players-hand")
 const dealersHTML = document.querySelector(".js-dealers-hand")
+const tablePlayer = document.querySelector(".js-players-table")
+const tableDealer = document.querySelector(".js-dealers-table")
 const giveCardBtn = document.querySelector(".js-give-card")
 const stopBtn = document.querySelector(".js-stop")
 const newGameBtn = document.querySelector(".js-newgame")
@@ -14,6 +16,8 @@ let dealersHand = []
 function init() {
     playersHTML.innerHTML = ``
     dealersHTML.innerHTML = ``
+    tablePlayer.innerHTML = ``
+    tableDealer.innerHTML = ``
     playersHand = []
     dealersHand = []
     stopBtn.disabled = false;
@@ -48,6 +52,7 @@ function startingCards() {
         let newCard = newCards[0]
         playersHand.push(newCard)
         playersHTML.innerHTML += `<p class="cardName">${newCard.suit} ${newCard.value}</p>`
+        tablePlayer.innerHTML += `<img class="card-img" src="./imgs/English_pattern_${newCard.value}_of_${newCard.suit}.svg" alt="">`
         valueOfAceP()
         document.querySelector(".js-valuesp").innerText = `Össz érték: ${playerSum()}`
         if (playerSum() >= 21) { finalResult() }
@@ -95,6 +100,7 @@ function checkingDealer() {
     if (dealersSum() < 17 && playerSum() <= 21) { drawCardByDealer() }
     if (dealersHand.length <= 1) {
         dealersHTML.innerHTML += `<p class="cardName">${dealersHand[0].suit} ${dealersHand[0].value}</p>`
+        tableDealer.innerHTML += `<img class="card-img" src="./imgs/English_pattern_${dealersHand[0].value}_of_${dealersHand[0].suit}.svg" alt="">`
     }
     valueOfAceD()
 }
@@ -119,13 +125,15 @@ function dealersSum() {
 function showDealersCards() {
     dealersHTML.innerHTML = ``;
     document.querySelector(".js-valuesd").innerText = `Össz érték: ${dealersSum()}`
+    tableDealer.innerHTML = ``
     for (let i = 0; i < dealersHand.length; i += 1) {
         if (dealersHand[i].value === 1) {
-            let writtenValue = "ace"
-            dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ${writtenValue}</p>`
+            dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ace</p>`
+            tableDealer.innerHTML += `<img class="card-img" src="./imgs/English_pattern_ace_of_${dealersHand[i].suit}.svg" alt="">`
         }
         else {
             dealersHTML.innerHTML += `<p class="cardName">${dealersHand[i].suit} ${dealersHand[i].value}</p>`
+            tableDealer.innerHTML += `<img class="card-img" src="./imgs/English_pattern_${dealersHand[i].value}_of_${dealersHand[i].suit}.svg" alt="">`
         }
     }
     stopBtn.disabled = true;

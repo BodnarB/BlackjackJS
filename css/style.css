@@ -104,3 +104,30 @@ button:disabled:hover {
     font-size: 1.3rem;
     margin-top: 2rem;
 }
+
+.card-img {
+    height: 180px;
+    margin-left: -5rem;
+    filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.671));
+    transform: translateX(5.1rem);
+}
+
+.cards-owner {
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 90%;
+}
+
+.cards-place {
+    background-color: rgba(0, 0, 0, 0.356);
+    width: 49%;
+    padding:1rem 2rem;
+    border-radius: 0.3rem;
+}
