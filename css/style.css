@@ -1,0 +1,101 @@
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(180deg, #1b72051f 0%, rgb(0 0 0 / 81%) 100%), url(../imgs/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+h1 {
+    font-size: 1.4rem;
+    background-color: rgb(19, 19, 19);
+    padding: 1rem;
+    color: whitesmoke;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.play-btn {
+    margin: 1rem;
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+    border: 2px solid rgba(255, 255, 255, 0);
+    background-color: rgb(255 180 44);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.play-btn:hover {
+    cursor: pointer;
+    background-color: rgb(255, 218, 137);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition-duration: 0.2s;
+}
+
+.table {
+    display: flex;
+    border-radius: 0.3rem;
+    padding: 3rem 1rem;
+    width: 800px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hands {
+    display: flex;
+}
+
+.table p {
+    margin: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.table p.whosehand {
+    font-weight: 500;
+    margin: 0;
+    background-color: rgb(36, 36, 36);
+    padding: 1rem;
+    color: antiquewhite;
+}
+
+.hand {
+    overflow: hidden;
+    border-radius: 0.3rem;
+    width: 245px;
+    margin: 1rem 2rem;
+    background-color: rgb(255, 247, 236);
+    box-shadow: 5px 5px 10px #0000005e;
+}
+
+.values {
+    font-weight: 500;
+}
+
+.cardName::first-letter {
+    text-transform: uppercase;
+}
+
+button:disabled,
+button:disabled:hover {
+    background-color: rgb(216, 216, 216);
+    color: black;
+    cursor: default;
+    border: 2px solid rgba(255, 255, 255, 0)
+}
+
+.results p {
+    text-align: center;
+    color: white;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+}

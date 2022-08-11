@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Blackjack</h1>
+    </header>
+    <main>
+        <div class="btns">
+            <button class="js-give-card play-btn">Kártyát kérek</button>
+            <button class="js-stop play-btn">Megállok</button>
+            <button class="js-newgame play-btn">Új játék</button>
+        </div>
+        <div class="js-table table">
+            <div class="hands">
+                <div class="hand">
+                    <p class="whosehand">A játékos kártyái</p>
+                    <p class="js-valuesp values"></p>
+                    <div class="js-players-hand"></div>
+                </div>
+                <div class="hand">
+                    <p class="whosehand">A dealer kártyái</p>
+                    <p class="js-valuesd values"></p>
+                    <div class="js-dealers-hand"></div>
+                </div>
+            </div>
+            <div class="js-results results"></div>
+        </div>
+        <div class="players-table"></div>
+        <div class="dealers-table"></div>
+
+
+
+
+
+
+
+    </main>
+    <footer></footer>
+    <script src=" ./js/app.js">
+    </script>
+</body>
+
+</html>
