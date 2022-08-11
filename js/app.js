@@ -158,7 +158,7 @@ function finalResult() {
     }
     else if (playerSum() <= 21 && playerSum() > dealersSum()) {
         resultsHTML.innerHTML = `<p>A játékos nyert! Lapjainak értéke összesen: ${playerSum()}</p>
-        <p>A dealer lapjai összesen: ${dealersSum()} </p>`
+        <p>A dealer lapjainak össz értéke: ${dealersSum()} </p>`
     }
     else if (playerSum() <= 21 && playerSum() == dealersSum()) {
         resultsHTML.innerHTML = `<p>Döntetlen! Lapok értéke: ${playerSum()}</p>`
