@@ -100,7 +100,8 @@ function checkingDealer() {
     if (dealersSum() < 17 && playerSum() <= 21) { drawCardByDealer() }
     if (dealersHand.length <= 1) {
         dealersHTML.innerHTML += `<p class="cardName">${dealersHand[0].suit} ${dealersHand[0].value}</p>`
-        tableDealer.innerHTML += `<img class="card-img" src="./imgs/English_pattern_${dealersHand[0].value}_of_${dealersHand[0].suit}.svg" alt="">`
+        tableDealer.innerHTML += `<img class="card-img" src="./imgs/English_pattern_${dealersHand[0].value}_of_${dealersHand[0].suit}.svg" alt="">
+        <img class="card-img" src="./imgs/Card_back_01.svg" alt="">`
     }
     valueOfAceD()
 }
