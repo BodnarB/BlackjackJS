@@ -48,8 +48,8 @@ function startingCards() {
         let newCards = deck.splice(randomIndex, 1)
         let newCard = newCards[0]
         playersHand.push(newCard)
-        valueOfAce()
         playersHTML.innerHTML += `<p class="cardName">${newCard.suit} ${newCard.value}</p>`
+        valueOfAce()
         document.querySelector(".js-valuesp").innerText = `Össz érték: ${playerSum()}`
         if (playersHand.length <= 2) { checkingDealer() }
         if (playerSum() >= 21) { finalResult() }
@@ -63,7 +63,6 @@ function valueOfAce() {
             break
         }
         else if ((playersHand[i].value).includes("ace") && playerSum() > 21) {
-            console.log("ACEEE") /////////////
             playersHand[i].value = 1
         }
     }
