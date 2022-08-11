@@ -55,30 +55,35 @@ main {
     display: flex;
 }
 
-.table p {
-    margin: 0.5rem;
+.values {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.cardName {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.349);
+    padding: 0.8rem;
     font-size: 1.1rem;
 }
 
 .table p.whosehand {
     font-weight: 500;
     margin: 0;
-    background-color: rgb(36, 36, 36);
+    background-color: rgb(255 180 44);
     padding: 1rem;
-    color: antiquewhite;
+    font-size: 1.2rem;
 }
 
 .hand {
+    height: fit-content;
     overflow: hidden;
-    border-radius: 0.3rem;
-    width: 245px;
+    text-align: center;
+    border-radius: 0.2rem;
+    width: 300px;
     margin: 1rem 2rem;
     background-color: rgb(255, 247, 236);
     box-shadow: 5px 5px 10px #0000005e;
-}
-
-.values {
-    font-weight: 500;
 }
 
 .cardName::first-letter {
