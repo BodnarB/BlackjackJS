@@ -25,7 +25,6 @@ function createDeck() {
     return deck;
 }
 
-
 // Az "új játék" funkció és betöltéskor alapértelmezett állapot
 function init() {
     stopBtn.disabled = false;
@@ -38,7 +37,6 @@ function init() {
     dealersHand = [];
     createDeck();
     startGame();
-
 }
 
 // Csak az init-ben fut le! Az init része.
@@ -49,9 +47,7 @@ function startGame() {
     drawByDealer();
 }
 
-function valueCheck() {
-    if (playerSum() === 21 || dealerSum() === 21 || playerSum() >= 21) { endGame() }
-}
+function valueCheck() { if (playerSum() === 21 || dealerSum() === 21 || playerSum() >= 21) { endGame() } }
 
 function drawByPlayer() {
     let randomIndex = (Math.floor(Math.random() * deck.length));
@@ -99,9 +95,7 @@ function dealerSum() {
 
 function valueOfAce(whoseHand, whoseSum) {
     for (let i = 0; i < whoseHand.length; i += 1) {
-        if (whoseHand[i].value === 1) {
-            continue;
-        }
+        if (whoseHand[i].value === 1) { continue; }
         else if ((whoseHand[i].value).includes("ace") && whoseSum() > 21) {
             whoseHand[i].value = 1
         }
@@ -124,11 +118,7 @@ function showDealersCards() {
     }
 }
 
-function dealersTurn() {
-    while (dealerSum() < 17 && playerSum() < 21) {
-        drawByDealer()
-    }
-}
+function dealersTurn() { while (dealerSum() < 17 && playerSum() < 21) { drawByDealer() } }
 
 function endGame() {
     stopBtn.disabled = true;
