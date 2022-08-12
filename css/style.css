@@ -118,7 +118,7 @@ button:disabled:hover {
 .card-img {
     height: 180px;
     margin-left: -5rem;
-    filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.671));
+    filter: drop-shadow(-2px 3px 5px rgba(0, 0, 0, 0.8));
     transform: translateX(5.1rem);
 }
 
